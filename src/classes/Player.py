@@ -1,13 +1,14 @@
 import pygame
 
 class Player:
-    def __init__(self,x,y,velX,velY):
+    def __init__(self,x,y,velX,velY,cheese=0):
         self.pos = pygame.Vector2(x,y)
         self.vel = pygame.Vector2(velX,velY)
         self.speed = pygame.Vector2(0.1,7)
         self.jumping = True
         self.usedSave = False
         self.health = 3
+        self.cheese = cheese
     def draw(self, Surface):
         pygame.draw.rect(Surface,"lightgray",pygame.Rect(self.pos.x-50,self.pos.y-50,100,100))
     def get_rect(self):
