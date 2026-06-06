@@ -1,0 +1,2 @@
+Welcome to Archie! 
+A game our company(read: friend group in an MS Teams community) has been designing for years(read: we came up with it in third grade during virtual and we've just now started it back up)!
