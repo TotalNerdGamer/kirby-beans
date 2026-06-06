@@ -1,8 +1,10 @@
 import pygame
 import sys
 import os
-sys.path.append(os.path.abspath("./classes"))
-from classes.button import Button
+
+sys.path.append(os.path.abspath("./src/classes"))
+print(sys.path)
+from button import Button
 from tkinter.messagebox import showerror
 from functools import partial
 from sys import exit

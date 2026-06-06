@@ -1,0 +1,1 @@
+"./mouseworld/Scripts/python.exe" "./src/main/main.py"

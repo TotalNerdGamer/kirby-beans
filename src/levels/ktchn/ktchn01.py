@@ -1,11 +1,11 @@
 import sys
 import os
-sys.path.append(os.path.abspath("./classes"))
-from classes.Player import Player
-from classes.Platform import Platform
-from classes.mypos import myPos
+sys.path.append(os.path.abspath("./src/classes"))
+from Player import Player
+from Platform import Platform
+from mypos import myPos
 import pygame
-from classes.myimg import myimg
+from myimg import myimg
 
 pygame.init()
 screen = pygame.display.set_mode((1280,720))
@@ -18,8 +18,8 @@ platforms = [Platform(1280,700,2560,40,"green"),Platform(1320,460,400,40,"green"
 basepos1=myPos(0,0)
 basepos2 = myPos(lvlright,0)
 scrollpoint = 3
-bg1 = myimg(0,0,"assets/coolness.png")
-bg2 = myimg(1280,0,"assets/coolness.png")
+bg1 = myimg(0,0,"assets/backgrounds/cabinets.png")
+bg2 = myimg(1280,0,"assets/backgrounds/cabinets.png")
 all = [player,basepos1,basepos2]
 all.extend(platforms)
 ALL_SCROLL1_THINGS = all

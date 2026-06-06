@@ -7,6 +7,7 @@ class Player:
         self.speed = pygame.Vector2(0.1,7)
         self.jumping = True
         self.usedSave = False
+        self.health = 3
     def draw(self, Surface):
         pygame.draw.rect(Surface,"lightgray",pygame.Rect(self.pos.x-50,self.pos.y-50,100,100))
     def get_rect(self):
