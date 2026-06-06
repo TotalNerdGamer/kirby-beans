@@ -6,6 +6,7 @@ from Platform import Platform
 from mypos import myPos
 import pygame
 from myimg import myimg
+from cheese import Cheese
 
 pygame.init()
 screen = pygame.display.set_mode((1280,720))
@@ -15,11 +16,12 @@ clock = pygame.Clock()
 lvlright = 3840
 player = Player(50,50,0,0)
 platforms = [Platform(1280,700,2560,40,"green"),Platform(1320,460,400,40,"green"),Platform(3590,700,500,40)]
+colls = [Cheese()]
 basepos1=myPos(0,0)
 basepos2 = myPos(lvlright,0)
 scrollpoint = 3
-bg1 = myimg(0,0,"assets/backgrounds/cabinets.png")
-bg2 = myimg(1280,0,"assets/backgrounds/cabinets.png")
+bg1 = myimg(0,0,"backgrounds/cabinets.png")
+bg2 = myimg(1280,0,"backgrounds/cabinets.png")
 all = [player,basepos1,basepos2]
 all.extend(platforms)
 ALL_SCROLL1_THINGS = all
@@ -48,6 +50,11 @@ while running:
     bg2.update(screen)
     for i in ALL_THINGS:
         i.draw(screen)
+        try:
+            if i.kill:
+                ALL_THINGS.remove(i)
+        except:
+            pass
     
     pygame.display.flip()
     dt = clock.tick(60) / 1000
