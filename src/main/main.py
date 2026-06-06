@@ -3,14 +3,14 @@ import sys
 import os
 
 sys.path.append(os.path.abspath("./src/classes"))
-print(sys.path)
+sys.path.append(os.path.abspath("./src/helpfulstuff"))
 from button import Button
 from tkinter.messagebox import showerror
 from functools import partial
 from sys import exit
 import subprocess
 from time import sleep
-from helpfulstuff.help import *
+from help import *
 import threading
 
 modcheck = ["pygame.font"]
