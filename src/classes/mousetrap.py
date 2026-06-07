@@ -10,15 +10,17 @@ class Mousetrap:
         self.activated = False
         self.pos = pygame.Vector2(x-80,y-60)
     def draw(self,screen):
-        if self.activated:
+        if not self.activated:
             self.img = "hazards/mousetrap/open"
         else:
             self.img = "hazards/mousetrap/close"
-        self.imgsurf = pygame.image.load(f"assets/{self.img}").convert_alpha()
+        self.imgsurf = pygame.image.load(f"assets/{self.img}.png").convert_alpha()
         pygame.Surface.blit(screen,self.imgsurf,self.pos)
+    def get_rect(self):
+        return pygame.Rect(self.pos.x,self.pos.y,160,120)
     def update(self,player: Player):
         if not self.activated:
-            if self.pos.y<player.pos.y+50 < self.pos.y+120 - 98:
+            if self.pos.y< player.pos.y+50 < self.pos.y+98 and player.get_rect().colliderect(self.get_rect()):
                 self.activated = True
                 player.dmg()
     
