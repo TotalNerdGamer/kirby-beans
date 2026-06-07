@@ -1,3 +1,6 @@
+import json
+import os
+
 import pygame
 from myimg import myimg
 from Player import Player
