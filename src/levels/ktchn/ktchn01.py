@@ -16,12 +16,13 @@ clock = pygame.Clock()
 lvlright = 3840
 player = Player(50,50,0,0)
 platforms = [Platform(1280,700,2560,40,"green"),Platform(1320,460,400,40,"green"),Platform(3590,700,500,40)]
-colls = [Cheese(1320,420)]
+colls = [Cheese(1320,400)]
 basepos1=myPos(0,0)
 basepos2 = myPos(lvlright,0)
 scrollpoint = 3
-bg1 = myimg(0,0,"backgrounds/cabinets.png")
-bg2 = myimg(1280,0,"backgrounds/cabinets.png")
+bg = "cabinets"
+bg1 = myimg(0,0,f"backgrounds/{bg}.png")
+bg2 = myimg(1280,0,f"backgrounds/{bg}.png")
 all = [player,basepos1,basepos2]
 all.extend(platforms)
 all.extend(colls)
