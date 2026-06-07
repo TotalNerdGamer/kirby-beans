@@ -17,7 +17,7 @@ class Cheese(myimg):
         return pygame.Rect(self.pos.x-self.imgsurf.get_width()/2,self.pos.y-self.imgsurf.get_height()/2,self.imgsurf.get_width(),self.imgsurf.get_height())
     def update(self,player: Player):
         self.yoffval+=1
-        self.yoff = 10*math.sin(self.yoffval/100)
+        self.yoff = 10*math.sin(self.yoffval/50)
         self.pos.y = self.basey + self.yoff
         if self.playing:
             if self.frame < 5:
