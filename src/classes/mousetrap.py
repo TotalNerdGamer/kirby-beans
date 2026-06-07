@@ -8,13 +8,11 @@ class Mousetrap:
     The weight of the metal marble catapults the diver M through the air and into the washtub N, causing the cage O to fall from the top of the post P and trap the unsuspecting mouse."""
     def __init__(self, x,y):
         self.activated = False
+        self.frame = 0
         self.pos = pygame.Vector2(x-80,y-60)
     def draw(self,screen):
-        if not self.activated:
-            self.img = "hazards/mousetrap/open"
-        else:
-            self.img = "hazards/mousetrap/close"
-        self.imgsurf = pygame.image.load(f"assets/{self.img}.png").convert_alpha()
+        self.img = ["open","mid1","mid2","mid3","mid4","close"][self.frame]
+        self.imgsurf = pygame.image.load(f"assets/hazards/mousetrap/{self.img}.png").convert_alpha()
         pygame.Surface.blit(screen,self.imgsurf,self.pos)
     def get_rect(self):
         return pygame.Rect(self.pos.x,self.pos.y,160,120)
@@ -23,4 +21,9 @@ class Mousetrap:
             if self.pos.y+96< player.pos.y+50 < self.pos.y+98 and player.get_rect().colliderect(self.get_rect()):
                 self.activated = True
                 player.dmg()
+        else:
+            if self.frame < 5:
+                self.frame += 1
+                
+
     
