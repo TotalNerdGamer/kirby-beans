@@ -9,6 +9,7 @@ class Player:
         self.jumping = True
         self.usedSave = False
         self.health = 3
+        self.iframes = 0
         self.cheese = cheese
     def draw(self, Surface):
         pygame.draw.rect(Surface,"lightgray",pygame.Rect(self.pos.x-50,self.pos.y-50,100,100))
@@ -26,6 +27,8 @@ class Player:
         termvel = 1
         termvely = 3
         dox = False
+        if self.iframes > 0:
+            self.iframes -= 1
         if keys[pygame.K_a]:
             dox= True
             if self.vel.x > -1*termvel:
