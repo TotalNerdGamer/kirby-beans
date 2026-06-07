@@ -10,6 +10,7 @@ class Player:
         self.usedSave = False
         self.health = 3
         self.iframes = 0
+        self.con = True
         self.cheese = cheese
     def draw(self, Surface):
         pygame.draw.rect(Surface,"lightgray",pygame.Rect(self.pos.x-50,self.pos.y-50,100,100))
@@ -21,7 +22,7 @@ class Player:
                 if self.pos.x < platform.pos.x:
                     self.pos.x = platform.pos.x - platform.size.x/2 - 50
                 elif self.pos.x > platform.pos.x:
-                    self.pos.x = platform.pos.x + platform.size.x/2 + 51
+                    self.pos.x = platform.pos.x + platform.size.x/2 + 50
     def update(self, dt, platforms,colls):
         keys = pygame.key.get_pressed()
         termvel = 1
@@ -29,26 +30,28 @@ class Player:
         dox = False
         if self.iframes > 0:
             self.iframes -= 1
-        if keys[pygame.K_a]:
-            dox= True
-            if self.vel.x > -1*termvel:
-                self.vel.x -= self.speed.x
-            else:
-                self.vel.x = -1*termvel
-        if keys[pygame.K_d]:
-            dox = True
-            if self.vel.x < termvel:
-                self.vel.x += self.speed.x
-            else:
-                self.vel.x = termvel
-        if not dox:
-            self.vel.x = 0
+        if self.con:
+            if keys[pygame.K_a]:
+                dox= True
+                if self.vel.x > -1*termvel:
+                    self.vel.x -= self.speed.x
+                else:
+                    self.vel.x = -1*termvel
+            if keys[pygame.K_d]:
+                dox = True
+                if self.vel.x < termvel:
+                    self.vel.x += self.speed.x
+                else:
+                    self.vel.x = termvel
+            if not dox:
+                self.vel.x = 0
         self.pos.x += self.vel.x*300*dt
         self.xcoll(platforms)
-        if keys[pygame.K_w]:
-            if not self.jumping:
-                self.vel.y = self.speed.y
-                self.jumping = True
+        if self.con:
+            if keys[pygame.K_w]:
+                if not self.jumping:
+                    self.vel.y = self.speed.y
+                    self.jumping = True
         self.pos.y -= self.vel.y
         self.vel.y -= 0.1
         if self.vel.y <= -1*termvely:
