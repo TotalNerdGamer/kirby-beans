@@ -16,7 +16,7 @@ clock = pygame.Clock()
 lvlright = 3840
 player = Player(50,50,0,0)
 platforms = [Platform(1280,700,2560,40,"green"),Platform(1320,460,400,40,"green"),Platform(3590,700,500,40)]
-colls = [Cheese()]
+colls = [Cheese(1320,440)]
 basepos1=myPos(0,0)
 basepos2 = myPos(lvlright,0)
 scrollpoint = 3
@@ -24,6 +24,7 @@ bg1 = myimg(0,0,"backgrounds/cabinets.png")
 bg2 = myimg(1280,0,"backgrounds/cabinets.png")
 all = [player,basepos1,basepos2]
 all.extend(platforms)
+all.extend(colls)
 ALL_SCROLL1_THINGS = all
 all = [bg1,bg2]
 ALL_SCROLL2_THINGS= all
@@ -35,7 +36,7 @@ ALL_THINGS = all
 
 while running:
     screen.fill("white")
-    player.update(dt,platforms)
+    player.update(dt,platforms,colls)
     if player.pos.y - 50 > 720 or player.health < 0:
         running=False
         endreason = "died"

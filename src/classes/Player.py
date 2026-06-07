@@ -20,7 +20,7 @@ class Player:
                     self.pos.x = platform.pos.x - platform.size.x/2 - 50
                 elif self.pos.x > platform.pos.x:
                     self.pos.x = platform.pos.x + platform.size.x/2 + 51
-    def update(self, dt, platforms):
+    def update(self, dt, platforms,colls):
         keys = pygame.key.get_pressed()
         termvel = 1
         termvely = 3

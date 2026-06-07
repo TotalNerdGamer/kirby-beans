@@ -12,6 +12,6 @@ class myimg:
             self.pos.x = 2560 + self.pos.x
         elif self.pos.x > 1281:
             self.pos.x = self.pos.x - 2560
-        self.imgsurf = pygame.image.load(f"assets/{self.img}").convert()
+        self.imgsurf = pygame.image.load(f"assets/{self.img}").convert_alpha()
     def get_rect(self):
         return self.imgsurf.get_rect()

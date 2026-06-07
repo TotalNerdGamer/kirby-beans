@@ -4,7 +4,7 @@ from Player import Player
 
 class Cheese(myimg):
     def __init__(self,x,y):
-        super().__init__(x,y,"collectibles/cheese/cheese.png")
+        super().__init__(x-60,y-60,"collectibles/cheese/cheese.png")
         self.frame=0
         self.playing=False
     def update(self,player: Player):
@@ -15,4 +15,5 @@ class Cheese(myimg):
                 self.kill = True
                 player.cheese += 1
         self.img=f"collectibles/cheese/{["cheese","cheese_collect"][self.frame]}.png"
-        self.imgsurf = pygame.image.load(f"assets/{self.img}").convert()
+        self.imgsurf = pygame.image.load(f"assets/{self.img}").convert_alpha()
+        self.imgsurf.set_colorkey((0,0,0))
