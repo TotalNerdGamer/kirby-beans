@@ -67,3 +67,10 @@ class Player:
         for collectible in colls:
             if collectible.get_rect().colliderect(self.get_rect()):
                 collectible.playing = True
+    def dmg(self):
+        if self.iframes > 0:
+            return False
+        else:
+            self.health -= 1
+            self.iframes = 60
+            return True

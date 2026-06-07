@@ -8,6 +8,7 @@ import pygame
 from classes.myimg import myimg
 from classes.cheese import Cheese
 from classes.hudheart import HUDHeart
+from classes.mousetrap import Mousetrap
 
 pygame.init()
 screen = pygame.display.set_mode((1280,720))
@@ -16,9 +17,9 @@ running = True
 clock = pygame.Clock()
 lvlright = 3840
 player = Player(50,50,0,0)
-platforms = [Platform(1280,700,2560,40,"green"),Platform(1320,460,400,40,"green"),Platform(3590,700,500,40)]
+platforms = [Platform(1280,700,2560,40,"green"),Platform(1320,460,400,40,"green"),Platform(3590,700,500,40),Platform(1320,680-49,160,98,None)]
 colls = [Cheese(1320,400)]
-
+hazards = [Mousetrap(1320,620)]
 basepos1=myPos(0,0)
 basepos2 = myPos(lvlright,0)
 scrollpoint = 3
@@ -29,6 +30,7 @@ bg2 = myimg(1280,0,f"backgrounds/{bg}.png")
 all = [player,basepos1,basepos2]
 all.extend(platforms)
 all.extend(colls)
+all.extend(hazards)
 ALL_SCROLL1_THINGS = all
 all = [bg1,bg2]
 ALL_SCROLL2_THINGS= all
