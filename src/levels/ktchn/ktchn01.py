@@ -16,7 +16,7 @@ clock = pygame.Clock()
 lvlright = 3840
 player = Player(50,50,0,0)
 platforms = [Platform(1280,700,2560,40,"green"),Platform(1320,460,400,40,"green"),Platform(3590,700,500,40)]
-colls = [Cheese(1320,440)]
+colls = [Cheese(1320,420)]
 basepos1=myPos(0,0)
 basepos2 = myPos(lvlright,0)
 scrollpoint = 3
@@ -49,6 +49,8 @@ while running:
         player.xcoll(platforms)
     bg1.update(screen)
     bg2.update(screen)
+    for i in colls:
+        i.update(player)
     for i in ALL_THINGS:
         i.draw(screen)
         try:

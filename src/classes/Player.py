@@ -60,3 +60,6 @@ class Player:
                 elif self.pos.y > platform.pos.y:
                     self.pos.y = platform.pos.y + platform.size.y/2 + 50
                     self.vel.y = 0
+        for collectible in colls:
+            if collectible.get_rect().colliderect(self.get_rect()):
+                collectible.playing = True
