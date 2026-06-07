@@ -18,9 +18,11 @@ lvlright = 3840
 player = Player(50,50,0,0)
 platforms = [Platform(1280,700,2560,40,"green"),Platform(1320,460,400,40,"green"),Platform(3590,700,500,40)]
 colls = [Cheese(1320,400)]
+
 basepos1=myPos(0,0)
 basepos2 = myPos(lvlright,0)
 scrollpoint = 3
+hearts=[HUDHeart(5,5,1),HUDHeart(70,5,2),HUDHeart(135,5,3)]
 bg = "cabinets"
 bg1 = myimg(0,0,f"backgrounds/{bg}.png")
 bg2 = myimg(1280,0,f"backgrounds/{bg}.png")
@@ -33,6 +35,7 @@ ALL_SCROLL2_THINGS= all
 all = []
 all.extend(ALL_SCROLL2_THINGS)
 all.extend(ALL_SCROLL1_THINGS)
+all.extend(hearts)
 ALL_THINGS = all
 
 
@@ -52,6 +55,8 @@ while running:
     bg1.update(screen)
     bg2.update(screen)
     for i in colls:
+        i.update(player)
+    for i in hearts:
         i.update(player)
     for i in ALL_THINGS:
         i.draw(screen)

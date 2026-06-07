@@ -2,8 +2,8 @@ import json
 import os
 
 import pygame
-from myimg import myimg
-from Player import Player
+from classes.myimg import myimg
+from classes.Player import Player
 import math
 
 class Cheese(myimg):

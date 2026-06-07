@@ -1,5 +1,5 @@
 import pygame
-from Player import Player
+from classes.Player import Player
 
 class HUDHeart:
     "A heart in the HUD to represent the player's health."
@@ -10,3 +10,11 @@ class HUDHeart:
          
     def update(self,player: Player):
         self.full = (self.id <= player.health)
+    def draw(self,screen):
+        if self.full:
+            self.img = "hud/heart_full.png"
+        else:
+            self.img = "hud/heart_empty.png"
+        self.imgsurf = pygame.image.load(f"assets/{self.img}").convert_alpha()
+        pygame.Surface.blit(screen,self.imgsurf,self.pos)
+        
