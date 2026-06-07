@@ -1,6 +1,7 @@
 import pygame
 
 class Player:
+    "The player. Simple as that."
     def __init__(self,x,y,velX,velY,cheese=0):
         self.pos = pygame.Vector2(x,y)
         self.vel = pygame.Vector2(velX,velY)

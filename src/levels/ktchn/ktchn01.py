@@ -1,12 +1,13 @@
 import sys
 import os
-sys.path.append(os.path.abspath("./src/classes"))
-from Player import Player
-from Platform import Platform
-from mypos import myPos
+sys.path.append(os.path.abspath("./src"))
+from classes.Player import Player
+from classes.Platform import Platform
+from classes.mypos import myPos
 import pygame
-from myimg import myimg
-from cheese import Cheese
+from classes.myimg import myimg
+from classes.cheese import Cheese
+from classes.hudheart import HUDHeart
 
 pygame.init()
 screen = pygame.display.set_mode((1280,720))

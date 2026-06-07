@@ -2,15 +2,14 @@ import pygame
 import sys
 import os
 
-sys.path.append(os.path.abspath("./src/classes"))
-sys.path.append(os.path.abspath("./src/helpfulstuff"))
-from button import Button
+sys.path.append(os.path.abspath("./src"))
+from classes.button import Button
 from tkinter.messagebox import showerror
 from functools import partial
 from sys import exit
 import subprocess
 from time import sleep
-from help import *
+from helpfulstuff.help import *
 import threading
 
 modcheck = ["pygame.font"]
@@ -33,7 +32,7 @@ def startGame():
     running=False
     pygame.quit()
 pygame.init()
-start = Button(640,360,200,50,"blue","START",startGame)
+start = Button(640,540,200,50,"blue","START",startGame,float=True)
 screen = pygame.display.set_mode((1280,720))
 dt = 0
 clock = pygame.Clock()

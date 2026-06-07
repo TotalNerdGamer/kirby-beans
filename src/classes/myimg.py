@@ -3,6 +3,7 @@ import json
 import pygame
 
 class myimg:
+    "My version of an image. Created so I could have an image with a pos for scrolling."
     def __init__(self,x,y,img):
         self.pos = pygame.Vector2(x,y)
         self.img = img
