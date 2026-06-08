@@ -1,8 +1,9 @@
 from sys import exit
 from tkinter.messagebox import showerror
+import pygame
 class Scene:
     "All the world's a stage."
-    def __init__(self,screen,clock):
+    def __init__(self):
         self.modcheck = ["pygame.font"]
         for module in self.modcheck:
             try:

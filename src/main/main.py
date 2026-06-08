@@ -16,15 +16,12 @@ from helpfulstuff.help import *
 import threading
 from classes.Scene import Scene
 class MainScene(Scene):
-    def __init__(self,screen,clock):
-        super().__init__(screen,clock)
-        self.start = Button(640,540,200,50,"blue","START",partial(switchScene,),float=True)
-        
-        self.dt = 0
-        self.running = True
-        
-            
-    def draw(self,screen):
+    "The title screen scene. I'm a poet and I didn't even know it!"
+    def __init__(self,switchscene):
+        super().__init__()
+        self.start = Button(640,540,200,50,"blue","START",partial(switchscene,1),float=True)
+    def draw(self,screen: pygame.Surface):
         screen.fill("white")
         self.start.draw(screen)
-    def update(self)
+    def update(self,dt):
+        self.start.update()
