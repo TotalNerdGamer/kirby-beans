@@ -1,4 +1,5 @@
 from main import MainScene
+from levels.ktchn.ktchn01 import Kitchen01
 import pygame
 
 pygame.init()
@@ -9,22 +10,24 @@ def switchscene(i):
     global screen
     global scene
     global scenes
+    global sceneindex
     "hi"
     sceneindex = i
     scene = scenes[sceneindex]
     scene.__init__(switchscene)
-scenes = [MainScene(switchscene)]
+    print(scene)
+scenes = [MainScene(switchscene),Kitchen01(switchscene)]
 sceneindex = 0
 dt = 0
 scene = scenes[sceneindex]
 scene.__init__(switchscene)
 running = True
-
 while running:
     scene = scenes[sceneindex]
     scene.update(dt)
     scene.draw(screen)
     pygame.display.flip()
+    dt = clock.tick(60)/1000
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()

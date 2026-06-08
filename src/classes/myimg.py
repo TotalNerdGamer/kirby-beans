@@ -11,7 +11,7 @@ class myimg:
         self.imgsurf = pygame.image.load(f"assets/{self.img}").convert()
     def draw(self,Surface):
         pygame.Surface.blit(Surface,self.imgsurf,self.pos)
-    def update(self, screen):
+    def update(self):
         if self.pos.x + 1280 < -1:
             self.pos.x = 2560 + self.pos.x
         elif self.pos.x > 1281:

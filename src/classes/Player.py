@@ -38,6 +38,7 @@ class Player:
                 else:
                     self.vel.x = -1*termvel
             if keys[pygame.K_d]:
+                #print("hi")
                 dox = True
                 if self.vel.x < termvel:
                     self.vel.x += self.speed.x
@@ -45,7 +46,10 @@ class Player:
                     self.vel.x = termvel
             if not dox:
                 self.vel.x = 0
+        #print(f"1) {self.pos.x}")
         self.pos.x += self.vel.x*300*dt
+        #print(f"2) {self.pos.x}")
+        #print(self.vel.x)
         self.xcoll(platforms)
         if self.con:
             if keys[pygame.K_w]:

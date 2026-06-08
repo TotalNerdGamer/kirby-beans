@@ -3,8 +3,9 @@ from tkinter.messagebox import showerror
 import pygame
 class Scene:
     "All the world's a stage."
-    def __init__(self):
-        self.modcheck = ["pygame.font"]
+    def __init__(self,switchscene):
+        self.modcheck = ["pygame.font","pygame","pygame.Surface","pygame.display"]
+        self.switchscene = switchscene
         for module in self.modcheck:
             try:
                 self.attempt = eval(module)
