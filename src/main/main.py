@@ -16,19 +16,10 @@ from helpfulstuff.help import *
 import threading
 from classes.Scene import Scene
 class MainScene(Scene):
-    def __init__(self,dt,screen,clock):
-        self.modcheck = ["pygame.font"]
-        for module in self.modcheck:
-            try:
-                self.attempt = eval(module)
-            except:
-                showerror("Module Error",f"\"{module}\" did not install correctly!")
-                exit()
-            else:
-                if not self.attempt:
-                    showerror("Module Error",f"\"{module}\" did not install correctly!")
-                    exit()
-        start = Button(640,540,200,50,"blue","START",,float=True)
+    def __init__(self,screen,clock):
+        super().__init__
+        
+        start = Button(640,540,200,50,"blue","START",partial(switchScene,),float=True)
         screen = pygame.display.set_mode((1280,720))
         dt = 0
         clock = pygame.Clock()
