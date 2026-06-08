@@ -1,6 +1,9 @@
+from __future__ import annotations
 import pygame
 import sys
 import os
+
+
 
 sys.path.append(os.path.abspath("./src"))
 from classes.button import Button

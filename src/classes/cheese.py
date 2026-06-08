@@ -1,5 +1,7 @@
+from __future__ import annotations
 import json
 import os
+
 
 import pygame
 from classes.myimg import myimg

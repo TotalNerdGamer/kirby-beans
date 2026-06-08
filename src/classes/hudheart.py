@@ -1,5 +1,7 @@
+from __future__ import annotations
 import pygame
 from classes.Player import Player
+
 
 class HUDHeart:
     "A heart in the HUD to represent the player's health."

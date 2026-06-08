@@ -20,10 +20,11 @@ class Mousetrap:
         if not self.activated:
             if self.pos.y+96< player.pos.y+50 < self.pos.y+99 and player.get_rect().colliderect(self.get_rect()):
                 self.activated = True
-                player.dmg()
         else:
             if self.frame < 5:
                 self.frame += 1
+            else: 
+                player.dmg()
                 
 
     
