@@ -8,6 +8,7 @@ class Mousetrap:
     The weight of the metal marble catapults the diver M through the air and into the washtub N, causing the cage O to fall from the top of the post P and trap the unsuspecting mouse."""
     def __init__(self, x,y):
         self.activated = False
+        self.damaged = False
         self.frame = 0
         self.pos = pygame.Vector2(x-80,y-60)
     def draw(self,screen):
@@ -23,8 +24,9 @@ class Mousetrap:
         else:
             if self.frame < 5:
                 self.frame += 1
-            else: 
+            elif not self.damaged: 
                 player.dmg()
+                self.damaged = True
                 
 
     
