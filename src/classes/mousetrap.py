@@ -18,7 +18,7 @@ class Mousetrap:
         return pygame.Rect(self.pos.x,self.pos.y,160,120)
     def update(self,player: Player):
         if not self.activated:
-            if self.pos.y+96< player.pos.y+50 < self.pos.y+98 and player.get_rect().colliderect(self.get_rect()):
+            if self.pos.y+96< player.pos.y+50 < self.pos.y+99 and player.get_rect().colliderect(self.get_rect()):
                 self.activated = True
                 player.dmg()
         else:

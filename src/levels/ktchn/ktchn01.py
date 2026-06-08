@@ -17,9 +17,9 @@ running = True
 clock = pygame.Clock()
 lvlright = 3840
 player = Player(50,50,0,0)
-platforms = [Platform(1280,700,2560,40,"green"),Platform(1320,460,400,40,"green"),Platform(3590,700,500,40),Platform(1320,680-11,160,22)]
+platforms = [Platform(1280,700,2560,40,"green"),Platform(1320,460,400,40,"green"),Platform(3590,700,500,40),Platform(1320,680-11,160,22),Platform(1160,680-11,160,22),Platform(1480,680-11,160,22)]
 colls = [Cheese(1320,400)]
-hazards = [Mousetrap(1320,620)]
+hazards = [Mousetrap(1320,620),Mousetrap(1160,620),Mousetrap(1480,620)]
 basepos1=myPos(0,0)
 basepos2 = myPos(lvlright,0)
 scrollpoint = 3
@@ -44,7 +44,7 @@ ALL_THINGS = all
 while running:
     screen.fill("white")
     player.update(dt,platforms,colls)
-    if player.pos.y - 50 > 720 or player.health < 0:
+    if player.pos.y - 50 > 720 or player.health <= 0:
         running=False
         endreason = "died"
     if ((player.pos.x <= 1280/scrollpoint and player.vel.x < 0) or (player.pos.x >= 1280*(scrollpoint-1)/scrollpoint and player.vel.x > 0)) and 1280 < basepos2.pos.x - player.vel.x*300*dt and basepos1.pos.x - player.vel.x*300*dt < 0:
