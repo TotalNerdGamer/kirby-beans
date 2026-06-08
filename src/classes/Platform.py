@@ -1,6 +1,7 @@
 import pygame
 
 class Platform:
+    "The titular element of the genre."
     def __init__(self, x,y,width,height,col="green",type="grass"):
         self.pos = pygame.Vector2(x,y)
         self.size = pygame.Vector2(width,height)
