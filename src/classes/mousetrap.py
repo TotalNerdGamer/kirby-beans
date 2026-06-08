@@ -24,8 +24,9 @@ class Mousetrap:
         else:
             if self.frame < 5:
                 self.frame += 1
-            elif not self.damaged: 
-                player.dmg()
+            elif not self.damaged:
+                if self.get_rect().colliderect(player.get_rect()):
+                    player.dmg()
                 self.damaged = True
                 
 
