@@ -23,6 +23,9 @@ scene = scenes[sceneindex]
 scene.__init__(switchscene)
 running = True
 while running:
+    keys = pygame.key.get_just_pressed()
+    if keys[pygame.K_F4]:
+        pygame.display.toggle_fullscreen()
     scene = scenes[sceneindex]
     scene.update(dt)
     scene.draw(screen)
