@@ -9,7 +9,7 @@ from classes.Player import Player
 import math
 
 class Cheese(myimg):
-    "Seems a little cheesy if you ask me."
+    "These descriptions seem a little cheesy if you ask me."
     def __init__(self,x,y):
         super().__init__(x,y,"collectibles/cheese/cheese.png")
         self.imgsurf = pygame.image.load(f"assets/{self.img}").convert_alpha()
