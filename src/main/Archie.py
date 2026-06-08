@@ -15,7 +15,7 @@ def switchscene(i):
     sceneindex = i
     scene = scenes[sceneindex]
     scene.__init__(switchscene)
-    print(scene)
+    #print(scene)
 scenes = [MainScene(switchscene),Kitchen01(switchscene)]
 sceneindex = 0
 dt = 0
