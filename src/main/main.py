@@ -17,20 +17,14 @@ import threading
 from classes.Scene import Scene
 class MainScene(Scene):
     def __init__(self,screen,clock):
-        super().__init__
+        super().__init__(screen,clock)
+        self.start = Button(640,540,200,50,"blue","START",partial(switchScene,),float=True)
         
-        start = Button(640,540,200,50,"blue","START",partial(switchScene,),float=True)
-        screen = pygame.display.set_mode((1280,720))
-        dt = 0
-        clock = pygame.Clock()
-        running = True
-        while running:
-            screen.fill("white")
-            start.draw(screen)
-            pygame.display.flip()
-            dt = clock.tick(60) / 1000
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    running = False
-            start.update()
+        self.dt = 0
+        self.running = True
+        
+            
+    def draw(self,screen):
+        screen.fill("white")
+        self.start.draw(screen)
+    def update(self)

@@ -1,4 +1,5 @@
 from sys import exit
+from tkinter.messagebox import showerror
 class Scene:
     "All the world's a stage."
     def __init__(self,screen,clock):
