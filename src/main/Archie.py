@@ -2,6 +2,8 @@ from TitleScreen import TitleScene
 from levels.ktchn.ktchn01 import Kitchen01
 import pygame
 
+from src.main.DeathScene import DeathScene
+
 pygame.init()
 screen = pygame.display.set_mode((1280,720))
 clock = pygame.Clock()
@@ -16,7 +18,7 @@ def switchscene(i):
     scene = scenes[sceneindex]
     scene.__init__(switchscene)
     #print(scene)
-scenes = [TitleScene(switchscene),Kitchen01(switchscene)]
+scenes = [TitleScene(switchscene),DeathScene(switchscene),Kitchen01(switchscene)]
 sceneindex = 0
 dt = 0
 scene = scenes[sceneindex]

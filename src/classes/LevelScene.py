@@ -44,7 +44,7 @@ class LevelScene(Scene):
         self.player.update(dt,self.platforms,self.colls)
         if self.player.pos.y - 50 > 720 or self.player.health <= 0:
             #print("B")
-            self.switchscene(0)
+            self.switchscene(1)
             
         #print("C")
         if ((self.player.pos.x <= 1280/self.scrollpoint and self.player.vel.x < 0) or (self.player.pos.x >= 1280*(self.scrollpoint-1)/self.scrollpoint and self.player.vel.x > 0)) and 1280 < self.basepos2.pos.x - self.player.vel.x*300*dt and self.basepos1.pos.x - self.player.vel.x*300*dt < 0:

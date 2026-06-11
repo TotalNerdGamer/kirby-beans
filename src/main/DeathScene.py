@@ -2,7 +2,7 @@ from __future__ import annotations
 import pygame
 import sys
 import os
-
+import json
 
 
 sys.path.append(os.path.abspath("./src"))
@@ -19,7 +19,20 @@ class DeathScene(Scene):
     def __init__(self,switchscene):
         super().__init__(switchscene)
         self.frame = 0
+        with (open("data.json")) as f:
+            self.lives = json.load(f)["lives"]
+        self.text = f"Lives remaining: {self.lives}"
     def draw(self,screen: pygame.Surface):
         screen.fill("black")
     def update(self,dt):
         self.frame += 1
+        if self.frame >= 120 and (self.lives != -1):
+            with (open("data.json","+")) as f:
+                dct = json.load(f)
+                dct["lives"] = self.lives
+                json.dump(dct,f)
+            self.switchscene(2)
+        elif self.frame == 60:
+            self.lives -= 1
+        elif self.frame == 1 and self.lives == 0:
+            self.switchscene(0)
