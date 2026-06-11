@@ -15,7 +15,7 @@ from time import sleep
 from helpfulstuff.help import *
 import threading
 from classes.Scene import Scene
-class MainScene(Scene):
+class TitleScene(Scene):
     "The title screen scene. I'm a poet and I didn't even know it!"
     def __init__(self,switchscene):
         super().__init__(switchscene)

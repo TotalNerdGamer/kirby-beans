@@ -1,4 +1,4 @@
-from main import MainScene
+from TitleScreen import TitleScene
 from levels.ktchn.ktchn01 import Kitchen01
 import pygame
 
@@ -16,7 +16,7 @@ def switchscene(i):
     scene = scenes[sceneindex]
     scene.__init__(switchscene)
     #print(scene)
-scenes = [MainScene(switchscene),Kitchen01(switchscene)]
+scenes = [TitleScene(switchscene),Kitchen01(switchscene)]
 sceneindex = 0
 dt = 0
 scene = scenes[sceneindex]
