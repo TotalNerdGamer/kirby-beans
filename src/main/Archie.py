@@ -14,7 +14,7 @@ def switchscene(i):
     global scene
     global scenes
     global sceneindex
-    "hi"
+    #"hi"
     sceneindex = i
     scene = scenes[sceneindex]
     scene.__init__(switchscene)
