@@ -1,9 +1,12 @@
+import sys
+import os
+sys.path.append(os.path.abspath("./src"))
 from TitleScreen import TitleScene
 from levels.ktchn.ktchn01 import Kitchen01
 import pygame
 
 from levels.DebugScene import DebugScene
-from src.main.DeathScene import DeathScene
+from main.DeathScene import DeathScene
 
 pygame.init()
 screen = pygame.display.set_mode((1280,720))

@@ -27,9 +27,10 @@ class DeathScene(Scene):
     def update(self,dt):
         self.frame += 1
         if self.frame >= 120 and (self.lives != -1):
-            with (open("data.json","+")) as f:
+            with (open("data.json","r")) as f:
                 dct = json.load(f)
-                dct["lives"] = self.lives
+            dct["lives"] = self.lives
+            with open("data.json","w") as f:
                 json.dump(dct,f)
             self.switchscene(2)
         elif self.frame == 60:
