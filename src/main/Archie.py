@@ -4,7 +4,6 @@ sys.path.append(os.path.abspath("./src"))
 from TitleScreen import TitleScene
 from levels.ktchn.ktchn01 import Kitchen01
 import pygame
-
 from levels.DebugScene import DebugScene
 from main.DeathScene import DeathScene
 
