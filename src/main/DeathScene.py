@@ -24,6 +24,10 @@ class DeathScene(Scene):
         self.text = f"Lives remaining: {self.lives}"
     def draw(self,screen: pygame.Surface):
         screen.fill("black")
+        font = pygame.Font(None,32)
+        txt = font.render(f"Lives: {self.lives}",True,(255,255,255))
+        textpos = txt.get_rect(centerx=screen.get_width() / 2, centery=360)
+        screen.blit(txt,textpos)
     def update(self,dt):
         self.frame += 1
         if self.frame >= 120 and (self.lives != -1):
