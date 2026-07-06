@@ -5,7 +5,7 @@ class Player:
     def __init__(self,x,y,velX=0,velY=0,cheese=0):
         self.pos = pygame.Vector2(x,y)
         self.vel = pygame.Vector2(velX,velY)
-        self.speed = pygame.Vector2(0.1,7)
+        self.speed = pygame.Vector2(0.1,10)
         self.jumping = True
         self.usedSave = False
         self.health = 3
@@ -26,7 +26,7 @@ class Player:
     def update(self, dt, platforms,colls):
         keys = pygame.key.get_pressed()
         termvel = 1
-        termvely = 3
+        termvely = 5
         dox = False
         if self.iframes > 0:
             self.iframes -= 1
@@ -57,7 +57,7 @@ class Player:
                     self.vel.y = self.speed.y
                     self.jumping = True
         self.pos.y -= self.vel.y
-        self.vel.y -= 0.1
+        self.vel.y -= 0.2 if self.vel.y > 0 else 0.5
         if self.vel.y <= -1*termvely:
             self.vel.y = -1*termvely
         self.jumping = True

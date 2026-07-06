@@ -1,5 +1,1 @@
-{
-    "lives" : 5,
-    "continues":0,
-    "cheese":0
-}
+{"lives": 0, "continues": 0, "cheese": 0}
