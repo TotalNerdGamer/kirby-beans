@@ -1,5 +1,5 @@
 import pygame
-
+import math
 class Player:
     "The player. Simple as that."
     def __init__(self,x,y,velX=0,velY=0,cheese=0):
@@ -12,6 +12,7 @@ class Player:
         self.iframes = 0
         self.con = True
         self.cheese = cheese
+        self.airframes = 0
     def draw(self, Surface):
         pygame.draw.rect(Surface,"lightgray",pygame.Rect(self.pos.x-50,self.pos.y-50,100,100))
     def get_rect(self):
@@ -25,8 +26,13 @@ class Player:
                     self.pos.x = platform.pos.x + platform.size.x/2 + 51
     def update(self, dt, platforms,colls):
         keys = pygame.key.get_pressed()
-        termvel = 1
-        termvely = 3
+        print(self.jumping)
+        print(self.airframes)
+        if self.airframes >= 5:
+            termvel = 0.3
+        else:
+            termvel = 0.8
+        termvely = 5
         dox = False
         if self.iframes > 0:
             self.iframes -= 1
@@ -34,18 +40,23 @@ class Player:
             if keys[pygame.K_a]:
                 dox= True
                 if self.vel.x > -1*termvel:
-                    self.vel.x -= self.speed.x
+                    self.vel.x -= self.speed.x #- abs(self.vel.y)/10
                 else:
                     self.vel.x = -1*termvel
             if keys[pygame.K_d]:
                 #print("hi")
                 dox = True
                 if self.vel.x < termvel:
-                    self.vel.x += self.speed.x
+                    self.vel.x += self.speed.x #- abs(self.vel.y)/10
                 else:
                     self.vel.x = termvel
-            if not dox:
+            if not dox and not self.jumping:
                 self.vel.x = 0
+            """if self.jumping and not dox:
+                if self.vel.x > 0:
+                    self.vel.x -= 0.2
+                elif self.vel.x < 0:
+                    self.vel.x += 0.2"""
         #print(f"1) {self.pos.x}")
         self.pos.x += self.vel.x*300*dt
         #print(f"2) {self.pos.x}")
@@ -57,15 +68,17 @@ class Player:
                     self.vel.y = self.speed.y
                     self.jumping = True
         self.pos.y -= self.vel.y
-        self.vel.y -= 0.1
+        self.vel.y -= 0.1 if self.vel.y > 0 else 0.2
         if self.vel.y <= -1*termvely:
             self.vel.y = -1*termvely
         self.jumping = True
+        self.airframes += 1
         for platform in platforms:
             if self.get_rect().colliderect(platform.get_rect()):
                 if self.pos.y < platform.pos.y:
                     self.pos.y = platform.pos.y - platform.size.y/2 - 50
                     self.jumping = False
+                    self.airframes = 0
                     self.usedSave = False
                     self.vel.y = 0
                 elif self.pos.y > platform.pos.y:
