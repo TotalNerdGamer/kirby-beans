@@ -24,10 +24,11 @@ class Player:
                     self.pos.x = platform.pos.x - platform.size.x/2 - 50
                 elif self.pos.x > platform.pos.x:
                     self.pos.x = platform.pos.x + platform.size.x/2 + 51
+                self.vel.x = 0
     def update(self, dt, platforms,colls):
         keys = pygame.key.get_pressed()
-        print(self.jumping)
-        print(self.airframes)
+        #print(self.jumping)
+        #print(self.airframes)
         if self.airframes >= 5:
             termvel = 0.3
         else:
@@ -57,6 +58,8 @@ class Player:
                     self.vel.x -= 0.2
                 elif self.vel.x < 0:
                     self.vel.x += 0.2"""
+        else:
+            self.vel.x = 0
         #print(f"1) {self.pos.x}")
         self.pos.x += self.vel.x*300*dt
         #print(f"2) {self.pos.x}")

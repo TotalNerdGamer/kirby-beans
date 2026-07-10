@@ -10,9 +10,10 @@ from classes.cheese import Cheese
 from classes.hudheart import HUDHeart
 from classes.mousetrap import Mousetrap
 from classes.Scene import Scene
+from classes.Dialogue import Dialogue
 class LevelScene(Scene):
     "Why don't we level the playing field?"
-    def __init__(self,switchscene,platforms,colls,hazards,x,y,lvlright=1280):
+    def __init__(self,switchscene,platforms,colls,hazards,npcs,x,y,lvlright=1280):
         super().__init__(switchscene)
         self.platforms = platforms
         self.colls = colls
@@ -23,13 +24,18 @@ class LevelScene(Scene):
         self.basepos2 = myPos(self.lvlright,0)
         self.scrollpoint = 3
         self.hearts=[HUDHeart(5,5,1),HUDHeart(70,5,2),HUDHeart(135,5,3)]
+        self.dlg = []
+        self.npcs = npcs
         self.bg = "cabinets"
         self.bg1 = myimg(0,0,f"backgrounds/{self.bg}.png")
         self.bg2 = myimg(1280,0,f"backgrounds/{self.bg}.png")
-        all = [self.player,self.basepos1,self.basepos2]
+        all = []
+        all.extend(npcs)
+        all.extend([self.player,self.basepos1,self.basepos2])
         all.extend(platforms)
         all.extend(colls)
         all.extend(hazards)
+        
         self.ALL_SCROLL1_THINGS = all
         all = [self.bg1,self.bg2]
         self.ALL_SCROLL2_THINGS= all
@@ -37,6 +43,7 @@ class LevelScene(Scene):
         all.extend(self.ALL_SCROLL2_THINGS)
         all.extend(self.ALL_SCROLL1_THINGS)
         all.extend(self.hearts)
+        all.extend(self.dlg)
         self.ALL_THINGS = all
         #print("A")
     def update(self,dt):
@@ -62,6 +69,11 @@ class LevelScene(Scene):
             i.update(self.player)
         for i in self.hearts:
             i.update(self.player)
+        for i in self.dlg:
+            i.update(dt)
+        for i in self.npcs:
+            i.update(self.player,self.adddlg)
+        
     def draw(self,screen):
         screen.fill("white")
         for i in self.ALL_THINGS:
@@ -69,5 +81,12 @@ class LevelScene(Scene):
             try:
                 if i.kill:
                     self.ALL_THINGS.remove(i)
+                    if type(i) == Dialogue:
+                        self.dlg.remove(i)
             except:
                 pass
+    def adddlg(self, dlg: Dialogue):
+        dlg.kill = False
+        self.dlg.append(dlg)
+        self.ALL_THINGS.append(dlg)
+        
