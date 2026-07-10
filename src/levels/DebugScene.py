@@ -18,7 +18,7 @@ class DebugScene(LevelScene):
         colls = [Cheese(1320,400)]
         hazards = [Mousetrap(1320,620),Mousetrap(1160,620),Mousetrap(1480,620)]
         npcs = []
-        testnpc = TalkNPC(Dialogue("Hey there! I'm Mr. Tomato.\rWelcome to the code playground.\rThis is where objects are tested!\rHow do you feel knowing our entire lives aren't real?\rArchie\0s: Uhh... bad, I guess?\0|\rOh. Well, that's pessimistic if you ask me."),1280,300,40,40,"tomato","smile")
+        testnpc = TalkNPC(Dialogue("Hey there! I'm Mr. Tomato.\rWelcome to the code playground.\rThis is where objects are tested!\rHow do you feel knowing our entire lives aren't real?\rArchie\0s: Uhh... bad, I guess?\0|\rOh. Well, that's pessimistic if you ask me."),1280,300,64,64,"tomato","smile")
         npcs.append(testnpc)
         super().__init__(switchscene,platforms,colls,hazards,npcs,50,600,3840)
         self.bg = "cabinets"
