@@ -47,5 +47,5 @@ class TalkNPC:
                 self.sprpath = f"{self.SPRITES_PATH}/base.png"
             else:
                 self.sprpath = f"{self.SPRITES_PATH}/base-{self.emotion}.png"
-        self.imgsurf = pygame.image.load(f"{self.sprpath}").convert()
+        self.imgsurf = pygame.image.load(f"{self.sprpath}").convert_alpha()
         pygame.Surface.blit(screen,self.imgsurf,self.pos)
