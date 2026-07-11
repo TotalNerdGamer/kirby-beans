@@ -7,7 +7,7 @@ from classes.Player import *
 
 class TalkNPC:
     "Hello! As the shrimp NPC, I..."
-    def __init__(self, dlg: Dialogue,x,y,width,height,sprites="default",emotion="neutral"):
+    def __init__(self, dlg: Dialogue,x,y,width,height,sprites="default", /, *, emotion="neutral"):
         self.SPRITES_PATH = f"./assets/npcs/{sprites}"
         self.emotion = emotion
         self.talking = False
