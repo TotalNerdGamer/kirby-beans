@@ -5,7 +5,7 @@ import math
 
 class Button:
     "Cute as a button."
-    def __init__(self,x,y,w,h,col,text,func: function,textcol="white",float=False,tsize=64):
+    def __init__(self,x,y,w,h,col,text,func: function, /, *, textcol="white",float=False,tsize=64):
         self.pos=pygame.Vector2(x,y)
         self.size=pygame.Vector2(w,h)
         self.col=col
