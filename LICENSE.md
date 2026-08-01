@@ -29,6 +29,9 @@ As stated in Clause 2, the User has the right to advertise the Software, or othe
 CLAUSE 8
 The User is legally allowed to use this license in any software they make, and can use said license even without downloading the Software, as long as they obtain the text of the license through legal means.
 
+CLAUSE 9
+If a User discovers a bug, glitch, or other form of problem in the Software(the "Issue"), they may contact the Creator with a description of the Issue, the scene it occurred on, and a crash report if one is available and necessary. If the User wishes, they may attach a patch that fixes the Issue(the "Fix"). The Creator will attempt to replicate the Issue and review it as well as the Fix. 
+
 The User is also subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
