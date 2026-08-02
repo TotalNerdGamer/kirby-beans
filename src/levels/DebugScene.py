@@ -1,12 +1,7 @@
 import sys
 import os
 sys.path.append(os.path.abspath("./src"))
-from classes.Platform import Platform
-from classes.cheese import Cheese
-from classes.mousetrap import Mousetrap
-from classes.LevelScene import LevelScene
-from classes.TalkNPC import TalkNPC
-from classes.Dialogue import Dialogue
+from classes import *
 class DebugScene(LevelScene):
     "EXTERMINATE"
     def __init__(self,switchscene):

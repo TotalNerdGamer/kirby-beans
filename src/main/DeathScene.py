@@ -6,7 +6,7 @@ import json
 
 
 sys.path.append(os.path.abspath("./src"))
-from classes.Scene import Scene
+from classes import Scene
 from main.INS import resolvename
 class DeathScene(Scene):
     "It comes for us all in the end."

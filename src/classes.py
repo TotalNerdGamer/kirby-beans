@@ -60,7 +60,23 @@ class Button:
             else:
                 self.pressed = False
                 self.pressframes = 0
-
+class myimg:
+    "My version of an image. Created so I could have an image with a pos for scrolling."
+    def __init__(self,x,y,img):
+        self.pos = pygame.Vector2(x,y)
+        self.img = img
+        
+        self.imgsurf = pygame.image.load(f"assets/{self.img}").convert()
+    def draw(self,Surface):
+        pygame.Surface.blit(Surface,self.imgsurf,self.pos)
+    def update(self):
+        if self.pos.x + 1280 < -1:
+            self.pos.x = 2560 + self.pos.x
+        elif self.pos.x > 1281:
+            self.pos.x = self.pos.x - 2560
+        self.imgsurf = pygame.image.load(f"assets/{self.img}").convert_alpha()
+    def get_rect(self):
+        return self.imgsurf.get_rect()
 class Cheese(myimg):
     "These descriptions seem a little cheesy if you ask me."
     def __init__(self,x,y):
@@ -160,6 +176,21 @@ class HUDHeart:
             self.img = "hud/heart_empty.png"
         self.imgsurf = pygame.image.load(f"assets/{self.img}").convert_alpha()
         pygame.Surface.blit(screen,self.imgsurf,self.pos)
+class Scene:
+    "All the world's a stage."
+    def __init__(self,switchscene):
+        self.modcheck = ["pygame.font","pygame","pygame.Surface","pygame.display"]
+        self.switchscene = switchscene
+        for module in self.modcheck:
+            try:
+                self.attempt = eval(module)
+            except:
+                showerror("Module Error",f"\"{module}\" did not install correctly!")
+                exit()
+            else:
+                if not self.attempt:
+                    showerror("Module Error",f"\"{module}\" did not install correctly!")
+                    exit()
 
 class LevelScene(Scene):
     "Why don't we level the playing field?"
@@ -270,23 +301,7 @@ class Mousetrap:
                 
 
 
-class myimg:
-    "My version of an image. Created so I could have an image with a pos for scrolling."
-    def __init__(self,x,y,img):
-        self.pos = pygame.Vector2(x,y)
-        self.img = img
-        
-        self.imgsurf = pygame.image.load(f"assets/{self.img}").convert()
-    def draw(self,Surface):
-        pygame.Surface.blit(Surface,self.imgsurf,self.pos)
-    def update(self):
-        if self.pos.x + 1280 < -1:
-            self.pos.x = 2560 + self.pos.x
-        elif self.pos.x > 1281:
-            self.pos.x = self.pos.x - 2560
-        self.imgsurf = pygame.image.load(f"assets/{self.img}").convert_alpha()
-    def get_rect(self):
-        return self.imgsurf.get_rect()
+
 
 class myPos:
     "A tracker for a position. Used to measure scrolling."
@@ -408,21 +423,6 @@ class Player:
             return True
 
 
-class Scene:
-    "All the world's a stage."
-    def __init__(self,switchscene):
-        self.modcheck = ["pygame.font","pygame","pygame.Surface","pygame.display"]
-        self.switchscene = switchscene
-        for module in self.modcheck:
-            try:
-                self.attempt = eval(module)
-            except:
-                showerror("Module Error",f"\"{module}\" did not install correctly!")
-                exit()
-            else:
-                if not self.attempt:
-                    showerror("Module Error",f"\"{module}\" did not install correctly!")
-                    exit()
 
 class TalkNPC:
     "Hello! As the shrimp NPC, I..."
