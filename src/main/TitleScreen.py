@@ -7,11 +7,7 @@ import os
 
 sys.path.append(os.path.abspath("./src"))
 from classes import *
-from tkinter.messagebox import showerror
 from functools import partial
-from sys import exit
-import subprocess
-from time import sleep
 from helpfulstuff.help import *
 class TitleScene(Scene):
     "The title screen scene. I'm a poet and I didn't even know it!"

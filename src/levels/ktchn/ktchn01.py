@@ -1,7 +1,6 @@
 import sys
 import os
 sys.path.append(os.path.abspath("./src"))
-import pygame
 from classes import *
 class Kitchen01(LevelScene):
     def __init__(self,switchscene):
