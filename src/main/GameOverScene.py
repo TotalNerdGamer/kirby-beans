@@ -3,9 +3,8 @@ import pygame
 import sys
 import os
 sys.path.append(os.path.abspath("./src"))
-from classes.button import Button
+from classes import *
 from functools import partial
-from classes.Scene import Scene
 import json
 class GameOverScene(Scene):
     "ba ba doo ba da da da da da dadada"
