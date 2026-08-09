@@ -1,5 +1,5 @@
 Celestial MA-NSD License
-v1.0 - 2026
+v1.1 - 2026
 
 Copyright (c) 2026 Charles Thomson
 
@@ -25,6 +25,12 @@ Expanding on the details in Clause 5, cases under which the most recent answer t
 
 CLAUSE 7
 As stated in Clause 2, the User has the right to advertise the Software, or otherwise attempt to increase the Software's publicity. However, the Creator is not required to compensate the User, unless they have previously agreed to(i.e. a sponsorship). Compensation will be based on how successful the User's attempt(the "Promotion") was in the first 14 days after the Promotion, as decided by the Creator.
+
+CLAUSE 8
+The User is legally allowed to use this license in any software they make, and can use said license even without downloading the Software, as long as they obtain the text of the license through legal means.
+
+CLAUSE 9
+If a User discovers a bug, glitch, or other form of problem in the Software(the "Issue"), they may contact the Creator with a description of the Issue, the scene it occurred on, and a crash report if one is available and necessary. If the User wishes, they may attach a patch that fixes the Issue(the "Fix"). The Creator will attempt to replicate the Issue and review it as well as the Fix. 
 
 The User is also subject to the following conditions:
 

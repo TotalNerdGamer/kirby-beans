@@ -6,22 +6,22 @@ from levels.ktchn.ktchn01 import Kitchen01
 import pygame
 from levels.DebugScene import DebugScene
 from main.DeathScene import DeathScene
+from main.GameOverScene import GameOverScene
 
 pygame.init()
 screen = pygame.display.set_mode((1280,720))
 clock = pygame.Clock()
-def switchscene(i):
+def switchscene(id):
+    "Switches scenes. Who would have guessed?"
     global clock
     global screen
     global scene
     global scenes
     global sceneindex
-    #"hi"
-    sceneindex = i
+    sceneindex = id
     scene = scenes[sceneindex]
     scene.__init__(switchscene)
-    #print(scene)
-scenes = [TitleScene(switchscene),DeathScene(switchscene),DebugScene(switchscene),Kitchen01(switchscene)]
+scenes = [TitleScene(switchscene),DeathScene(switchscene),DebugScene(switchscene),Kitchen01(switchscene),GameOverScene(switchscene)]
 sceneindex = 0
 dt = 0
 scene = scenes[sceneindex]
@@ -37,4 +37,3 @@ while running:
         if event.type == pygame.QUIT:
             pygame.quit()
             running = False
-    

@@ -6,27 +6,29 @@ import json
 
 
 sys.path.append(os.path.abspath("./src"))
-from tkinter.messagebox import showerror
-from functools import partial
-from sys import exit
-import subprocess
-from time import sleep
-from helpfulstuff.help import *
-import threading
-from classes.Scene import Scene
+from classes import Scene
+from main.INS import resolvename
 class DeathScene(Scene):
     "It comes for us all in the end."
     def __init__(self,switchscene):
         super().__init__(switchscene)
         self.frame = 0
+        self.shakepath = [(0,0),(0,-1),(0,1),(1,0),(-1,0),(-1,1),(0,0)]
+        self.shakemult = 3
+        
+        self.target = 2
         with (open("data.json")) as f:
             self.lives = json.load(f)["lives"]
         self.text = f"Lives remaining: {self.lives}"
+        if self.lives <= 0:
+            self.shakemult = 5
     def draw(self,screen: pygame.Surface):
         screen.fill("black")
-        font = pygame.Font(None,32)
-        txt = font.render(f"Lives: {self.lives}",True,(255,255,255))
-        textpos = txt.get_rect(centerx=screen.get_width() / 2, centery=360)
+        font = pygame.Font(None,40)
+        shakeindex = max(0,min(self.frame - 60, len(self.shakepath)-1))
+        shake = self.shakepath[shakeindex]
+        txt = font.render(f"Lives: {max(self.lives,0)}",True,(255,255,255))
+        textpos = txt.get_rect(centerx=screen.get_width() / 2 + shake[0]*self.shakemult, centery=360+shake[1]*self.shakemult)
         screen.blit(txt,textpos)
     def update(self,dt):
         self.frame += 1
@@ -36,8 +38,10 @@ class DeathScene(Scene):
             dct["lives"] = self.lives
             with open("data.json","w") as f:
                 json.dump(dct,f)
-            self.switchscene(2)
+            self.switchscene(self.target)
+        elif self.frame >= 120:
+            self.switchscene(self.target)
         elif self.frame == 60:
             self.lives -= 1
         elif self.frame == 1 and self.lives == 0:
-            self.switchscene(0)
+            self.target = (resolvename("Game Over"))
