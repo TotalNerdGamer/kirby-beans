@@ -21,7 +21,13 @@ def switchscene(id):
     sceneindex = id
     scene = scenes[sceneindex]
     scene.__init__(switchscene)
-scenes = [TitleScene(switchscene),DeathScene(switchscene),DebugScene(switchscene),Kitchen01(switchscene),GameOverScene(switchscene)]
+scenes = [
+    TitleScene(switchscene),
+    DeathScene(switchscene),
+    DebugScene(switchscene),
+    Kitchen01(switchscene),
+    GameOverScene(switchscene),
+    ]
 sceneindex = 0
 dt = 0
 scene = scenes[sceneindex]

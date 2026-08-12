@@ -10,7 +10,17 @@ class GameOverScene(Scene):
     "ba ba doo ba da da da da da dadada"
     def __init__(self,switchscene):
         super().__init__(switchscene)
-        self.cont = Button(640,540,200,50,"white","RETURN",partial(self.contin),float=True, textcol="black")
+        self.cont = Button(
+            640,
+            540,
+            200,
+            50,
+            "white",
+            "RETURN",
+            partial(self.contin),
+            float=True,
+            textcol="black"
+            )
     def draw(self,screen: pygame.Surface):
         screen.fill("black")
         self.cont.draw(screen)

@@ -13,7 +13,14 @@ class DeathScene(Scene):
     def __init__(self,switchscene):
         super().__init__(switchscene)
         self.frame = 0
-        self.shakepath = [(0,0),(0,-1),(0,1),(1,0),(-1,0),(-1,1),(0,0)]
+        self.shakepath = [
+            (0,0),
+            (0,-1),
+            (0,1),(1,0),
+            (-1,0),
+            (-1,1),
+            (0,0)
+            ]
         self.shakemult = 3
         
         self.target = 2

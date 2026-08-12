@@ -1,5 +1,30 @@
 def resolvename(name):
-    scenes = [["Title Scene","Title Screen","Title"], ["Death Scene","Death","Death Screen"],["Debug","Debug Area","Debug Room"],["Kitchen 01","Kitchen Level 1"],["Game Over","Game Over Scene", "Game Over Screen"]]
+    scenes = [
+        [
+            "Title Scene",
+            "Title Screen",
+            "Title",
+            ],
+        [
+            "Death Scene",
+            "Death",
+            "Death Screen",
+            ],
+        [
+            "Debug",
+            "Debug Area",
+            "Debug Room",
+            ],
+        [
+            "Kitchen 01",
+            "Kitchen Level 1",
+            ],
+        [
+            "Game Over",
+            "Game Over Scene",
+            "Game Over Screen",
+            ]
+        ]
     for x in range(len(scenes)):
         i = scenes[x]
         if type(i) == type(["hi","hi"]):
@@ -7,4 +32,4 @@ def resolvename(name):
                 return x
         elif name == i:
             return x
-    return 0
+    return -1

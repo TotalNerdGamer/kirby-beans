@@ -10,7 +10,15 @@ class TitleScene(Scene):
     def __init__(self,switchscene):
         super().__init__(switchscene)
         self.frame = 0
-        self.start = Button(640,540,200,50,"blue","START",partial(switchscene,2),float=True)
+        self.start = Button(
+            640,
+            540,
+            200,
+            50,
+            "blue",
+            "START",
+            partial(switchscene,2),
+            float=True)
     def draw(self,screen: pygame.Surface):
         screen.fill("white")
         if self.frame >= 300:
