@@ -432,12 +432,16 @@ class TalkNPC:
         self.talking = False
         self.cantalk = False
         self.dlg = dlg
+        self.encon = False
         self.pos = pygame.Vector2(x,y)
         self.size = pygame.Vector2(width,height)
     def get_rect(self):
         return pygame.Rect(self.pos.x-self.size.x/2,self.pos.y-self.size.y/2,self.size.x,self.size.y)
     def update(self,player: Player, adddlg: function):
-        keys = pygame.key.get_pressed()
+        keys = pygame.key.get_just_pressed()
+        if self.encon:
+            self.encon = False
+            player.con = True
         if player.get_rect().colliderect(self.get_rect()) and (keys[pygame.K_z] or keys[pygame.K_RETURN]) and player.con:
             adddlg(self.dlg)
             self.cantalk = True
@@ -445,7 +449,7 @@ class TalkNPC:
         if self.cantalk:
             self.talking = self.dlg.writing and self.dlg.speaker == ""
         if self.dlg.kill:
-            player.con = True
+            self.encon = True
         if self.dlg.specchar != "":
             spec = self.dlg.specchar
             #print(spec)
@@ -467,7 +471,7 @@ class TalkNPC:
             else:
                 self.sprpath = f"{self.SPRITES_PATH}/base-{self.emotion}.png"
         self.imgsurf = pygame.image.load(f"{self.sprpath}").convert_alpha()
-        pygame.Surface.blit(screen,self.imgsurf,self.pos)
+        pygame.Surface.blit(screen,self.imgsurf,pygame.Rect(self.pos.x-self.size.x/2,self.pos.y-self.size.y/2,self.size.x,self.size.y))
 
 class TLPlatform(Platform):
     "A shift in genre."
