@@ -100,7 +100,7 @@ class Cheese(myimg):
             elif self.frame == 5:
                 self.kill = True
                 player.cheese += 1
-        self.img=f"collectibles/cheese/{["cheese","cheese_collect"][min(self.frame,1)]}.png"
+        self.img=f"collectibles/cheese/{["baked_beans","cheese_collect"][min(self.frame,1)]}.png"
         self.imgsurf = pygame.image.load(f"assets/{self.img}").convert_alpha()
 
 class Dialogue:
@@ -331,14 +331,20 @@ class Player:
         self.vel = pygame.Vector2(velX,velY)
         self.speed = pygame.Vector2(0.1,7)
         self.jumping = True
+        self.size = pygame.Vector2(100,100)
         self.usedSave = False
         self.health = 3
+        self.facing = "right"
         self.iframes = 0
         self.con = True
         self.cheese = cheese
         self.airframes = 0
     def draw(self, Surface):
-        pygame.draw.rect(Surface,"lightgray",pygame.Rect(self.pos.x-50,self.pos.y-50,100,100))
+        #pygame.draw.rect(Surface,"lightgray",pygame.Rect(self.pos.x-50,self.pos.y-50,100,100))
+        self.sprpath = f"assets/player/kirb{self.facing}.png"
+        self.imgsurf = pygame.image.load(f"{self.sprpath}").convert_alpha()
+        pygame.Surface.blit(Surface,self.imgsurf,pygame.Rect(self.pos.x-self.size.x/2,self.pos.y-self.size.y/2,self.size.x,self.size.y))
+        pass
     def get_rect(self):
         return pygame.Rect(self.pos.x-50,self.pos.y-50,100,100)
     def xcoll(self, platforms):
@@ -351,6 +357,7 @@ class Player:
                 self.vel.x = 0
     def update(self, dt, platforms,colls):
         keys = pygame.key.get_pressed()
+        newkeys = pygame.key.get_just_pressed()
         #print(self.jumping)
         #print(self.airframes)
         if self.airframes >= 5:
@@ -375,7 +382,7 @@ class Player:
                     self.vel.x += self.speed.x #- abs(self.vel.y)/10
                 else:
                     self.vel.x = termvel
-            if not dox and not self.jumping:
+            if not dox:
                 self.vel.x = 0
             """if self.jumping and not dox:
                 if self.vel.x > 0:
@@ -391,8 +398,8 @@ class Player:
         self.xcoll(platforms)
         if self.con:
             if keys[pygame.K_w]:
-                if not self.jumping:
-                    self.vel.y = self.speed.y
+                if True:
+                    self.vel.y = self.speed.y/(2 if (self.jumping and self.airframes > 5) else 1)
                     self.jumping = True
         self.pos.y -= self.vel.y
         self.vel.y -= 0.1 if self.vel.y > 0 else 0.2
@@ -414,6 +421,10 @@ class Player:
         for collectible in colls:
             if collectible.get_rect().colliderect(self.get_rect()):
                 collectible.playing = True
+        if self.vel.x < 0:
+            self.facing = "left"
+        elif self.vel.x > 0:
+            self.facing = "right"
     def dmg(self):
         if self.iframes > 0:
             return False
@@ -475,5 +486,5 @@ class TalkNPC:
 
 class TLPlatform(Platform):
     "A shift in genre."
-    def __init__(x,y,w,h,col="green",type="grass"):
+    def __init__(self,x,y,w,h,col="green",type="grass"):
         super().__init__(x+w/2,y+h/2,w,h,col,type)

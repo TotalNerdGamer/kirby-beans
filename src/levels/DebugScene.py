@@ -8,41 +8,38 @@ class DebugScene(LevelScene):
     "EXTERMINATE"
     def __init__(self,switchscene):
         platforms = [
-            Platform(1280,700,2560,40,"green"),
-            Platform(1320,460,400,40,"green"),
-            Platform(3590,700,500,40),
-            Platform(1320,680-11,160,22),
-            Platform(1160,680-11,160,22),
-            Platform(1480,680-11,160,22),
+            TLPlatform(0,680,3840,40,"red"),
             ]
         colls = [
             Cheese(1320,400),
             ]
         hazards = [
-            Mousetrap(1320,620),
-            Mousetrap(1160,620),
-            Mousetrap(1480,620),
             ]
         npcs = []
-        testnpc = TalkNPC(
+        mtk = TalkNPC(
             Dialogue(
                     conv([
-                        "Hey there! I'm Mr. Tomato.",
-                        "Welcome to the code playground.",
-                        "This is where objects are tested!",
-                        "How do you feel knowing our entire lives aren't real?",
-                        "Archie\0s: Uhh... bad, I guess?\0|",
-                        "Oh. Well, that's pessimistic if you ask me.",
+                        "KIRBY DEJA DE COMER FRIJOLES HORNEADOS!",
+                        "ME ESTOY PONIENDO FURIOSO!",
                         ])
                         ),
                 1280,
                 360,
-                64,
-                64,
-                "tomato",
-                emotion="smile"
+                128,
+                128,
+                "metaknight",
+                emotion="frown"
                 )
-        npcs.append(testnpc)
+        chefk = TalkNPC(
+            Dialogue(
+                conv(
+                    [
+                        "Hi Kirby. \rIt's me, Chef Kawasaki. Here, in this theater. \rI made ten cans of baked beans. \rSee if you can get them all!"
+                    ]
+                    )
+                )
+        )
+        npcs.append(mtk)
         super().__init__(
             switchscene,
             platforms,

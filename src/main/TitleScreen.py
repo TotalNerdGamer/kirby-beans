@@ -1,6 +1,7 @@
 from __future__ import annotations
 import pygame
 import sys
+import json
 import os
 sys.path.append(os.path.abspath("./src"))
 from classes import *
@@ -10,6 +11,8 @@ class TitleScene(Scene):
     def __init__(self,switchscene):
         super().__init__(switchscene)
         self.frame = 0
+        with open("data.json","w") as f:
+            json.dump({"lives":5,"beans":0,"continues":0},f)
         self.start = Button(
             640,
             540,
@@ -19,8 +22,10 @@ class TitleScene(Scene):
             "START",
             partial(switchscene,2),
             float=True)
+        self.title = myimg(640,200,"title.webp")
     def draw(self,screen: pygame.Surface):
         screen.fill("white")
+        self.title.draw(screen)
         if self.frame >= 300:
             self.start.draw(screen)
     def update(self,dt):
